@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DemoVC_09_Detail">
+            <connections>
+                <outlet property="animationButton" destination="CE7-vD-cU1" id="6yL-ic-nGi"/>
+                <outlet property="tomImageView" destination="M9V-5h-Y1p" id="240-ye-mP8"/>
+                <outlet property="view" destination="iN0-l3-epB" id="JAg-Qp-y28"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tom1" translatesAutoresizingMaskIntoConstraints="NO" id="M9V-5h-Y1p">
+                    <rect key="frame" x="200" y="100" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="1tx-Rs-gT1"/>
+                        <constraint firstAttribute="width" constant="200" id="h3s-GJ-om0"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CE7-vD-cU1">
+                    <rect key="frame" x="250" y="350" width="100" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.88324317009999997" blue="0.57767656570000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="i2w-a4-jeT"/>
+                        <constraint firstAttribute="width" constant="100" id="kGx-gP-AEX"/>
+                    </constraints>
+                    <state key="normal" title="开始动画"/>
+                    <connections>
+                        <action selector="animationButtonAction:" destination="-1" eventType="touchUpInside" id="U5q-m9-uda"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="CE7-vD-cU1" firstAttribute="top" secondItem="M9V-5h-Y1p" secondAttribute="bottom" constant="50" id="CgX-OC-S71"/>
+                <constraint firstItem="M9V-5h-Y1p" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-100" id="FSu-WR-8EH"/>
+                <constraint firstItem="M9V-5h-Y1p" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="bKQ-7t-VgZ"/>
+                <constraint firstItem="CE7-vD-cU1" firstAttribute="centerX" secondItem="M9V-5h-Y1p" secondAttribute="centerX" id="mkG-k9-827"/>
+            </constraints>
+            <point key="canvasLocation" x="406" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="tom1" width="158" height="158"/>
+    </resources>
+</document>
