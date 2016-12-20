@@ -46,7 +46,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -62,64 +62,10 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellID];
     }
-    if (0 == indexPath.section)
-    {
-        cell.textLabel.text = _titlesArray[indexPath.section][DemoVC_09_title][indexPath.row][@"name"];
-    }
-    else if (1 == indexPath.section)
-    {
-        cell.textLabel.text = _titlesArray[indexPath.section][DemoVC_09_title][indexPath.row][@"name"];
-    }
-    
+
+    cell.textLabel.text = _titlesArray[indexPath.section][DemoVC_09_title][indexPath.row][@"name"];
+
     return cell;
-}
-
-
-- (NSArray *)titlesArray
-{
-    if (!_titlesArray)
-    {
-        _titlesArray = @[
-                         @{
-                             DemoVC_09_title : @[
-                                     @{
-                                         @"name":@"1、大小变化【改变 frame】"
-                                         },
-                                     @{
-                                         @"name":@"2、拉伸变化【改变 bounds】"
-                                         },
-                                     @{
-                                         @"name":@"3、中心位置【改变 center】"
-                                         },
-                                     @{
-                                         @"name":@"4、透明度  【改变 alpha】"
-                                         },
-                                     @{
-                                         @"name":@"5、弹簧 Spring 动画"
-                                         },
-                                     @{
-                                         @"name":@"6、背景颜色【改变 backgroundColor】"
-                                         },
-                                     @{
-                                         @"name":@"7、转场动画"
-                                         }]
-                             },
-                         @{
-                             DemoVC_09_title : @[
-                                     @{
-                                         @"name":@"1、缩放动画"
-                                         },
-                                     @{
-                                         @"name":@"2、拉伸变化"
-                                         },
-                                     @{
-                                         @"name":@"3、中心位置"
-                                         }
-                                     ]
-                             }
-                         ];
-    }
-    return _titlesArray;
 }
 
 /*
@@ -194,7 +140,19 @@
     }
     else if (1 == section)
     {
-        title = @"UIView Transform 动画";
+        title = @"CABasicAnimation 经典动画";
+    }
+    else if (2 == section)
+    {
+        title = @"CATransition 转场动画";
+    }
+    else if (3 == section)
+    {
+        title = @"CAKeyframeAnimation 关键帧动画";
+    }
+    else if (4 == section)
+    {
+        title = @"CAAnimationGroup 组动画";
     }
     titleLabel.text = title;
     return headView;
@@ -208,6 +166,92 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 10;
+}
+
+- (NSArray *)titlesArray
+{
+    if (!_titlesArray)
+    {
+        _titlesArray = @[
+                         @{
+                             DemoVC_09_title : @[
+                                     @{
+                                         @"name":@"1、大小变化【改变 frame】"
+                                         },
+                                     @{
+                                         @"name":@"2、拉伸变化【改变 bounds】"
+                                         },
+                                     @{
+                                         @"name":@"3、中心位置【改变 center】"
+                                         },
+                                     @{
+                                         @"name":@"4、透明度  【改变 alpha】"
+                                         },
+                                     @{
+                                         @"name":@"5、弹簧 Spring 动画"
+                                         },
+                                     @{
+                                         @"name":@"6、背景颜色【改变 backgroundColor】"
+                                         },
+                                     @{
+                                         @"name":@"7、转场动画"
+                                         }]
+                             },
+                         @{
+                             DemoVC_09_title : @[
+                                     @{
+                                         @"name":@"1、缩放动画"
+                                         },
+                                     @{
+                                         @"name":@"2、拉伸变化"
+                                         },
+                                     @{
+                                         @"name":@"3、中心位置"
+                                         }
+                                     ]
+                             },
+                         @{
+                             DemoVC_09_title : @[
+                                     @{
+                                         @"name":@"1、缩放动画"
+                                         },
+                                     @{
+                                         @"name":@"2、拉伸变化"
+                                         },
+                                     @{
+                                         @"name":@"3、中心位置"
+                                         }
+                                     ]
+                             },
+                         @{
+                             DemoVC_09_title : @[
+                                     @{
+                                         @"name":@"1、缩放动画"
+                                         },
+                                     @{
+                                         @"name":@"2、拉伸变化"
+                                         },
+                                     @{
+                                         @"name":@"3、中心位置"
+                                         }
+                                     ]
+                             },
+                         @{
+                             DemoVC_09_title : @[
+                                     @{
+                                         @"name":@"1、缩放动画"
+                                         },
+                                     @{
+                                         @"name":@"2、拉伸变化"
+                                         },
+                                     @{
+                                         @"name":@"3、中心位置"
+                                         }
+                                     ]
+                             }
+                         ];
+    }
+    return _titlesArray;
 }
 
 @end

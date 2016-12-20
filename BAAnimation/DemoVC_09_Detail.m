@@ -85,6 +85,7 @@
     
         }];
     }
+
 }
 
 - (void)ba_animationChangeAlpha

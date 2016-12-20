@@ -330,6 +330,7 @@
 				C42FF2171E077AF100E29DD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
