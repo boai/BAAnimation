@@ -8,6 +8,7 @@
 
 #import "DemoVC_09.h"
 #import "DemoVC_09_Detail.h"
+#import "BACABasicAnimationDemo.h"
 
 
 /**
@@ -68,46 +69,12 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+
     if (0 == indexPath.section)
     {
         DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
@@ -116,8 +83,27 @@
     }
     else if (1 == indexPath.section)
     {
+        BACABasicAnimationDemo *vc = [BACABasicAnimationDemo new];
+        vc.title = @"CABasicAnimation 经典动画";
+//        vc.animationType = @(indexPath.row).intValue;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (2 == indexPath.section)
+    {
         DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
-        vc.animationType = @(indexPath.row).intValue + 7;
+        vc.animationType = @(indexPath.row).intValue;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (3 == indexPath.section)
+    {
+        DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
+        vc.animationType = @(indexPath.row).intValue;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else if (4 == indexPath.section)
+    {
+        DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
+        vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

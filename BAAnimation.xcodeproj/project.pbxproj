@@ -17,6 +17,8 @@
 		C42FF2241E077E6600E29DD5 /* DemoVC_09_Detail.m in Sources */ = {isa = PBXBuildFile; fileRef = C42FF2231E077E6600E29DD5 /* DemoVC_09_Detail.m */; };
 		C42FF2261E077FA200E29DD5 /* DemoVC_09_Detail.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42FF2251E077FA200E29DD5 /* DemoVC_09_Detail.xib */; };
 		C42FF26C1E07BD1400E29DD5 /* CALayer+BAKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C42FF26B1E07BD1400E29DD5 /* CALayer+BAKit.m */; };
+		C45C58401E0A6DD90024EC76 /* BACABasicAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = C45C583E1E0A6DD90024EC76 /* BACABasicAnimationDemo.m */; };
+		C45C58411E0A6DD90024EC76 /* BACABasicAnimationDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = C45C583F1E0A6DD90024EC76 /* BACABasicAnimationDemo.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,9 @@
 		C42FF2251E077FA200E29DD5 /* DemoVC_09_Detail.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoVC_09_Detail.xib; sourceTree = "<group>"; };
 		C42FF26A1E07BD1400E29DD5 /* CALayer+BAKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+BAKit.h"; sourceTree = "<group>"; };
 		C42FF26B1E07BD1400E29DD5 /* CALayer+BAKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+BAKit.m"; sourceTree = "<group>"; };
+		C45C583D1E0A6DD90024EC76 /* BACABasicAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACABasicAnimationDemo.h; sourceTree = "<group>"; };
+		C45C583E1E0A6DD90024EC76 /* BACABasicAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACABasicAnimationDemo.m; sourceTree = "<group>"; };
+		C45C583F1E0A6DD90024EC76 /* BACABasicAnimationDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BACABasicAnimationDemo.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +81,9 @@
 				C42FF2221E077E6600E29DD5 /* DemoVC_09_Detail.h */,
 				C42FF2231E077E6600E29DD5 /* DemoVC_09_Detail.m */,
 				C42FF2251E077FA200E29DD5 /* DemoVC_09_Detail.xib */,
+				C45C583D1E0A6DD90024EC76 /* BACABasicAnimationDemo.h */,
+				C45C583E1E0A6DD90024EC76 /* BACABasicAnimationDemo.m */,
+				C45C583F1E0A6DD90024EC76 /* BACABasicAnimationDemo.xib */,
 				C42FF20A1E077AF100E29DD5 /* Main.storyboard */,
 				C42FF2631E07BCD000E29DD5 /* CALayerAnimation */,
 				C42FF2011E077AF100E29DD5 /* Supporting Files */,
@@ -163,6 +171,7 @@
 				C42FF2211E077B6C00E29DD5 /* DemoVC_09.xib in Resources */,
 				C42FF2261E077FA200E29DD5 /* DemoVC_09_Detail.xib in Resources */,
 				C42FF2111E077AF100E29DD5 /* LaunchScreen.storyboard in Resources */,
+				C45C58411E0A6DD90024EC76 /* BACABasicAnimationDemo.xib in Resources */,
 				C42FF20E1E077AF100E29DD5 /* Assets.xcassets in Resources */,
 				C42FF20C1E077AF100E29DD5 /* Main.storyboard in Resources */,
 			);
@@ -176,6 +185,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C42FF2201E077B6C00E29DD5 /* DemoVC_09.m in Sources */,
+				C45C58401E0A6DD90024EC76 /* BACABasicAnimationDemo.m in Sources */,
 				C42FF2241E077E6600E29DD5 /* DemoVC_09_Detail.m in Sources */,
 				C42FF2061E077AF100E29DD5 /* AppDelegate.m in Sources */,
 				C42FF2031E077AF100E29DD5 /* main.m in Sources */,

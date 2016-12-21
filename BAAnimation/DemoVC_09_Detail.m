@@ -18,7 +18,12 @@
 #define frame_x  self.tomImageView.frame.origin.x
 #define frame_y  self.tomImageView.frame.origin.y
 
-@interface DemoVC_09_Detail ()
+#define kStartRadius 25
+#define kMargin 40
+#define kAnimationDuration 0.8
+
+
+@interface DemoVC_09_Detail ()<UIApplicationDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *tomImageView;
 @property (weak, nonatomic) IBOutlet UIButton    *animationButton;
@@ -32,7 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tomImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tom%i",self.animationType + 1]]];
+    [self.tomImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tom%i", 1]]];
+    
     [self.tomImageView setBackgroundColor:[UIColor greenColor]];
     
 }
@@ -137,6 +143,8 @@
         
     }];
 }
+
+
 
 - (IBAction)animationButtonAction:(UIButton *)sender
 {
