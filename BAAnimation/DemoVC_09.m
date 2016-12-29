@@ -9,6 +9,7 @@
 #import "DemoVC_09.h"
 #import "DemoVC_09_Detail.h"
 #import "BACABasicAnimationDemo.h"
+#import "BACAKeyframeAnimationDemo.h"
 
 
 /**
@@ -33,18 +34,9 @@
     
     self.title = @"博爱动画 demo";
     self.tableView.tableFooterView = [UIView new];
-    
-
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 5;
@@ -74,10 +66,10 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-
     if (0 == indexPath.section)
     {
         DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
+        vc.title = @"UIView 基本动画";
         vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -91,18 +83,21 @@
     else if (2 == indexPath.section)
     {
         DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
+        vc.title = @"CATransition 转场动画";
         vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (3 == indexPath.section)
     {
-        DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
-        vc.animationType = @(indexPath.row).intValue;
+        BACAKeyframeAnimationDemo *vc = [BACAKeyframeAnimationDemo new];
+        vc.title = @"CAKeyframeAnimation 关键帧动画";
+//        vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (4 == indexPath.section)
     {
         DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
+        vc.title = @"CAAnimationGroup 组动画";
         vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
