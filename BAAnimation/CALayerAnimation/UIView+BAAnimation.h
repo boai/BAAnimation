@@ -1,5 +1,5 @@
 //
-//  CALayer+BAKit.h
+//  UIView+BAAnimation.h
 //  BAAnimation
 //
 //  Created by 博爱 on 2016/12/19.
@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 
-@interface UIView (BAKit)
+@interface UIView (BAAnimation)
 
 /*!
  *  缩放显示动画
@@ -116,6 +116,4 @@
                             finishBlock:(void(^)())finishBlock;
 @end
 
-@interface CALayer (BAKit)
 
-@end

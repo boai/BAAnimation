@@ -7,7 +7,7 @@
 //
 
 #import "DemoVC_09_Detail.h"
-#import "CALayer+BAKit.h"
+#import "UIView+BAAnimation.h"
 
 /**
  *  获取屏幕宽度和高度
