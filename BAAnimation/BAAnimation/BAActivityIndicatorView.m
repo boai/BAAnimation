@@ -19,7 +19,7 @@
 #define IOS10_SDK_ALLOWED YES
 #endif
 
-#define QDActivityIndicatorAnimationKey @"lineAnimations"
+#define BAActivityIndicatorAnimationKey @"lineAnimations"
 #define AnimationDuration 1.5
 
 #ifdef IOS10_SDK_ALLOWED
@@ -79,8 +79,8 @@ static CGFloat pixelOne = -1.0f;
     for (NSInteger i = 0, l = _linesArray.count; i < l; i++) {
         CALayer *line = _linesArray[i];
         line.speed = 1.0;
-        [line removeAnimationForKey:QDActivityIndicatorAnimationKey];
-        [line addAnimation:[self groupAnimationWithIndex:i] forKey:QDActivityIndicatorAnimationKey];
+        [line removeAnimationForKey:BAActivityIndicatorAnimationKey];
+        [line addAnimation:[self groupAnimationWithIndex:i] forKey:BAActivityIndicatorAnimationKey];
     }
 }
 
@@ -176,8 +176,8 @@ static CGFloat pixelOne = -1.0f;
     for (NSInteger i = 0, l = _linesArray.count; i < l; i++) {
         CALayer *line = _linesArray[i];
         line.speed = 0.0;
-        if (![line animationForKey:QDActivityIndicatorAnimationKey]) {
-            [line addAnimation:[self groupAnimationWithIndex:i] forKey:QDActivityIndicatorAnimationKey];
+        if (![line animationForKey:BAActivityIndicatorAnimationKey]) {
+            [line addAnimation:[self groupAnimationWithIndex:i] forKey:BAActivityIndicatorAnimationKey];
         }
         _currentOffsetTime = ((-currentOffsetY + beginAnimationOffset) / distanceForCompleteAnimation) * AnimationDuration * 0.4;// timeOffset为0.6时loading刚好走完一轮，所以这里按总时间 * 0.4，从而保证loading停靠在顶部时，timeOffset刚好为0.6
         //        NSLog(@"_currentOffsetTime = %.2f, currentOffsetY = %.2f, distanceForStartRefresh = %.2f, distanceForCompleteAnimation = %.2f", (float)_currentOffsetTime, currentOffsetY, distanceForStartRefresh, distanceForCompleteAnimation);
@@ -190,7 +190,7 @@ static CGFloat pixelOne = -1.0f;
     for (CALayer *line in _linesArray)
     {
         _currentOffsetTime = 0;
-        [line removeAnimationForKey:QDActivityIndicatorAnimationKey];
+        [line removeAnimationForKey:BAActivityIndicatorAnimationKey];
     }
     if (self.hidesWhenStopped)
     {
@@ -200,7 +200,7 @@ static CGFloat pixelOne = -1.0f;
 
 - (BOOL)isAnimating {
     //这里偶然会返回NO，打印_line1.animationKeys会为nil，动画确实能出现，具体原因找不到,暂且先返回_isStartAnimating
-    //return [_line1 animationForKey:QDActivityIndicatorAnimationKey] != nil;
+    //return [_line1 animationForKey:BAActivityIndicatorAnimationKey] != nil;
     return _isStartAnimating;
 }
 

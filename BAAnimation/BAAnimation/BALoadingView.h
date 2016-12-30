@@ -19,10 +19,13 @@ typedef NS_ENUM(NSUInteger, BALoadingViewType) {
 
 @interface BALoadingView : UIView
 
+/*! 加载动画的样式 */
 @property (nonatomic, assign) BALoadingViewType loadingType;
 
-
+/*! 样式1 的颜色数组，默认为：@[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
+ */
 @property (nonatomic, strong) NSArray <UIColor *>*ballColorsArray;
+/*! 样式 2 和 样式 3 的主题颜色，默认：2为绿色，3为灰色 */
 @property (nonatomic, strong) UIColor *themColor;
 
 

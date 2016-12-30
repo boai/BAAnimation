@@ -68,7 +68,7 @@
 - (void)setupAnimateView
 {
     CGFloat shapeViewcornerRadius  = 10;
-    CGFloat shapeViewcornerRadius2 = 4;
+    CGFloat shapeViewcornerRadius2 = 8;
 
     self.shapeView1 = [[UIView alloc] init];
     self.shapeView2 = [[UIView alloc] init];
@@ -147,14 +147,19 @@
     /*! win 10 加载风格动画 */
     CAKeyframeAnimation *positionAnimation2 = [CAKeyframeAnimation animation];
     positionAnimation2.keyPath = @"position.x";
-    positionAnimation2.duration = 2.4;
-    positionAnimation2.values = @[ @0, @100, @120, @220 ];
+    positionAnimation2.duration = 2.5f;
+    positionAnimation2.values = @[ @0, @90, @110, @220 ];
     positionAnimation2.keyTimes = @[ @0, @.35, @.65, @1 ];
     positionAnimation2.timingFunctions = @[
                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut],
                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear],
                                            [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     positionAnimation2.additive = YES;
+    
+    CAKeyframeAnimation *scaleAnimation2 = [CAKeyframeAnimation animation];
+    scaleAnimation2.keyPath = @"transform.scale";
+    scaleAnimation2.values = @[@.9, @.7, @.5, @.3, @.2];
+    scaleAnimation2.keyTimes = @[@0, @(15 / 90.0), @(45 / 90.0), @(75 / 90.0), @1];
     
     CAKeyframeAnimation *alphaAnimation2 = [CAKeyframeAnimation animation];
     alphaAnimation2.keyPath = @"opacity";
@@ -165,7 +170,7 @@
     alphaAnimation2.keyTimes = @[ @0, @(.5 / 6.0), @(3 / 6.0), @(5.5 / 6.0), @1 ];
     
     CAAnimationGroup *group2 = [CAAnimationGroup animation];
-    group2.animations = @[positionAnimation2, alphaAnimation2];
+    group2.animations = @[positionAnimation2, scaleAnimation2, alphaAnimation2];
     group2.repeatCount = HUGE_VALF;
     group2.duration = 3.2f;
     
@@ -187,7 +192,7 @@
     [super layoutSubviews];
     
     CGFloat bigSize = 20;
-    CGFloat smallSize = 8;
+    CGFloat smallSize = 16;
     CGFloat lineSpace = 40;
     CGFloat minY = (CGRectGetHeight(self.bounds) - bigSize) / 2;
     CGFloat minX = (CGRectGetWidth(self.bounds) - 100) / 2;
@@ -244,6 +249,7 @@
 - (void)setThemColor:(UIColor *)themColor
 {
     _themColor = themColor;
+    
     self.loadingView3.tintColor = themColor;
     
     self.shapeView4.backgroundColor = _themColor;
@@ -256,6 +262,10 @@
 - (void)setBallColorsArray:(NSArray<UIColor *> *)ballColorsArray
 {
     _ballColorsArray = ballColorsArray;
+    
+    self.shapeView1.backgroundColor = _ballColorsArray[0];
+    self.shapeView2.backgroundColor = _ballColorsArray[1];
+    self.shapeView3.backgroundColor = _ballColorsArray[2];
 }
 
 - (UIView *)loadingView1
