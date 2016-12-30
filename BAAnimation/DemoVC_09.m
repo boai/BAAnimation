@@ -25,6 +25,7 @@
 
 @property (nonatomic, strong) NSArray *titlesArray;
 
+
 @end
 
 @implementation DemoVC_09
@@ -91,7 +92,7 @@
     {
         BACAKeyframeAnimationDemo *vc = [BACAKeyframeAnimationDemo new];
         vc.title = @"CAKeyframeAnimation 关键帧动画";
-//        vc.animationType = @(indexPath.row).intValue;
+        vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (4 == indexPath.section)
@@ -207,13 +208,13 @@
                          @{
                              DemoVC_09_title : @[
                                      @{
-                                         @"name":@"1、缩放动画"
+                                         @"name":@"1、Loading1"
                                          },
                                      @{
-                                         @"name":@"2、拉伸变化"
+                                         @"name":@"2、Loading2"
                                          },
                                      @{
-                                         @"name":@"3、中心位置"
+                                         @"name":@"3、Loading3"
                                          }
                                      ]
                              },

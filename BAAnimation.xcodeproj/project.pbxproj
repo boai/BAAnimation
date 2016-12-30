@@ -14,7 +14,8 @@
 		C42FF2111E077AF100E29DD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C42FF20F1E077AF100E29DD5 /* LaunchScreen.storyboard */; };
 		C42FF2201E077B6C00E29DD5 /* DemoVC_09.m in Sources */ = {isa = PBXBuildFile; fileRef = C42FF21E1E077B6C00E29DD5 /* DemoVC_09.m */; };
 		C42FF2211E077B6C00E29DD5 /* DemoVC_09.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42FF21F1E077B6C00E29DD5 /* DemoVC_09.xib */; };
-		C42FF26C1E07BD1400E29DD5 /* UIView+BAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C42FF26B1E07BD1400E29DD5 /* UIView+BAAnimation.m */; };
+		C4532F651E15ECD5006C70BD /* UIView+BAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C4532F641E15ECD5006C70BD /* UIView+BAAnimation.m */; };
+		C4532F681E15EF9E006C70BD /* BALoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4532F671E15EF9E006C70BD /* BALoadingView.m */; };
 		C48497271E14F5C700751910 /* BACABasicAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = C484971F1E14F5C700751910 /* BACABasicAnimationDemo.m */; };
 		C48497281E14F5C700751910 /* BACABasicAnimationDemo.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48497201E14F5C700751910 /* BACABasicAnimationDemo.xib */; };
 		C48497291E14F5C700751910 /* BACAKeyframeAnimationDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = C48497221E14F5C700751910 /* BACAKeyframeAnimationDemo.m */; };
@@ -35,8 +36,10 @@
 		C42FF21D1E077B6C00E29DD5 /* DemoVC_09.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoVC_09.h; sourceTree = "<group>"; };
 		C42FF21E1E077B6C00E29DD5 /* DemoVC_09.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoVC_09.m; sourceTree = "<group>"; };
 		C42FF21F1E077B6C00E29DD5 /* DemoVC_09.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoVC_09.xib; sourceTree = "<group>"; };
-		C42FF26A1E07BD1400E29DD5 /* UIView+BAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BAAnimation.h"; sourceTree = "<group>"; };
-		C42FF26B1E07BD1400E29DD5 /* UIView+BAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BAAnimation.m"; sourceTree = "<group>"; };
+		C4532F631E15ECD5006C70BD /* UIView+BAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BAAnimation.h"; sourceTree = "<group>"; };
+		C4532F641E15ECD5006C70BD /* UIView+BAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BAAnimation.m"; sourceTree = "<group>"; };
+		C4532F661E15EF9E006C70BD /* BALoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BALoadingView.h; sourceTree = "<group>"; };
+		C4532F671E15EF9E006C70BD /* BALoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BALoadingView.m; sourceTree = "<group>"; };
 		C484971E1E14F5C700751910 /* BACABasicAnimationDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BACABasicAnimationDemo.h; sourceTree = "<group>"; };
 		C484971F1E14F5C700751910 /* BACABasicAnimationDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BACABasicAnimationDemo.m; sourceTree = "<group>"; };
 		C48497201E14F5C700751910 /* BACABasicAnimationDemo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BACABasicAnimationDemo.xib; sourceTree = "<group>"; };
@@ -83,9 +86,8 @@
 				C42FF21D1E077B6C00E29DD5 /* DemoVC_09.h */,
 				C42FF21E1E077B6C00E29DD5 /* DemoVC_09.m */,
 				C42FF21F1E077B6C00E29DD5 /* DemoVC_09.xib */,
-				C42FF20A1E077AF100E29DD5 /* Main.storyboard */,
 				C484971D1E14F5C700751910 /* BAAnimationDemo */,
-				C42FF2631E07BCD000E29DD5 /* CALayerAnimation */,
+				C4532F621E15ECD5006C70BD /* UIViewAnimation */,
 				C42FF2011E077AF100E29DD5 /* Supporting Files */,
 			);
 			path = BAAnimation;
@@ -94,6 +96,7 @@
 		C42FF2011E077AF100E29DD5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C42FF20A1E077AF100E29DD5 /* Main.storyboard */,
 				C42FF20D1E077AF100E29DD5 /* Assets.xcassets */,
 				C42FF20F1E077AF100E29DD5 /* LaunchScreen.storyboard */,
 				C42FF2121E077AF100E29DD5 /* Info.plist */,
@@ -102,13 +105,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C42FF2631E07BCD000E29DD5 /* CALayerAnimation */ = {
+		C4532F621E15ECD5006C70BD /* UIViewAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				C42FF26A1E07BD1400E29DD5 /* UIView+BAAnimation.h */,
-				C42FF26B1E07BD1400E29DD5 /* UIView+BAAnimation.m */,
+				C4532F631E15ECD5006C70BD /* UIView+BAAnimation.h */,
+				C4532F641E15ECD5006C70BD /* UIView+BAAnimation.m */,
+				C4532F661E15EF9E006C70BD /* BALoadingView.h */,
+				C4532F671E15EF9E006C70BD /* BALoadingView.m */,
 			);
-			path = CALayerAnimation;
+			path = UIViewAnimation;
 			sourceTree = "<group>";
 		};
 		C484971D1E14F5C700751910 /* BAAnimationDemo */ = {
@@ -202,12 +207,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4532F651E15ECD5006C70BD /* UIView+BAAnimation.m in Sources */,
 				C48497291E14F5C700751910 /* BACAKeyframeAnimationDemo.m in Sources */,
 				C42FF2201E077B6C00E29DD5 /* DemoVC_09.m in Sources */,
 				C48497271E14F5C700751910 /* BACABasicAnimationDemo.m in Sources */,
 				C42FF2061E077AF100E29DD5 /* AppDelegate.m in Sources */,
 				C42FF2031E077AF100E29DD5 /* main.m in Sources */,
-				C42FF26C1E07BD1400E29DD5 /* UIView+BAAnimation.m in Sources */,
+				C4532F681E15EF9E006C70BD /* BALoadingView.m in Sources */,
 				C484972B1E14F5C700751910 /* DemoVC_09_Detail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

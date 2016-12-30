@@ -10,4 +10,6 @@
 
 @interface BACAKeyframeAnimationDemo : UIViewController
 
+@property (nonatomic, assign) int animationType;
+
 @end

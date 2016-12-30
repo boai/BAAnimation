@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tomImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tom%i", 1]]];
+    [self.tomImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tom%i", _animationType + 1]]];
     
     [self.tomImageView setBackgroundColor:[UIColor greenColor]];
     
