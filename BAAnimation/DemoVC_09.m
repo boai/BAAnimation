@@ -85,7 +85,7 @@
     {
         DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
         vc.title = @"CATransition 转场动画";
-        vc.animationType = @(indexPath.row).intValue;
+        vc.animationType = @(indexPath.row).intValue + 7;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (3 == indexPath.section)
@@ -176,32 +176,24 @@
                                          @"name":@"6、背景颜色【改变 backgroundColor】"
                                          },
                                      @{
-                                         @"name":@"7、转场动画"
-                                         }]
-                             },
-                         @{
-                             DemoVC_09_title : @[
-                                     @{
-                                         @"name":@"1、缩放动画"
+                                         @"name":@"7、旋转动画"
                                          },
                                      @{
-                                         @"name":@"2、拉伸变化"
-                                         },
-                                     @{
-                                         @"name":@"3、中心位置"
+                                         @"name":@"8、缩放动画"
                                          }
                                      ]
                              },
                          @{
                              DemoVC_09_title : @[
                                      @{
-                                         @"name":@"1、缩放动画"
-                                         },
+                                         @"name":@"1、播放器动画"
+                                         }
+                                     ]
+                             },
+                         @{
+                             DemoVC_09_title : @[
                                      @{
-                                         @"name":@"2、拉伸变化"
-                                         },
-                                     @{
-                                         @"name":@"3、中心位置"
+                                         @"name":@"1、转场动画"
                                          }
                                      ]
                              },

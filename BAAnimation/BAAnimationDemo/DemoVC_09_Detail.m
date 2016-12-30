@@ -144,8 +144,6 @@
     }];
 }
 
-
-
 - (IBAction)animationButtonAction:(UIButton *)sender
 {
     sender.selected = !sender.selected;
@@ -169,12 +167,12 @@
             [self ba_animationChangeBackgroundColor];
             break;
         case 6:
-            [self ba_animationTransition];
-            break;
-        case 7:
             [self ba_animationTransformRotation:sender.selected];
             break;
-            
+        case 7:
+            [self ba_animationTransition];
+            break;
+
         default:
             break;
     }
