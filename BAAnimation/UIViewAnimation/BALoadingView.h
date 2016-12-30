@@ -21,4 +21,10 @@ typedef NS_ENUM(NSUInteger, BALoadingViewType) {
 
 @property (nonatomic, assign) BALoadingViewType loadingType;
 
+
+@property (nonatomic, strong) NSArray <UIColor *>*ballColorsArray;
+@property (nonatomic, strong) UIColor *themColor;
+
+
+
 @end

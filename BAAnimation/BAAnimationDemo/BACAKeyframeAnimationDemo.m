@@ -73,7 +73,6 @@
         self.loadingView2.hidden = YES;
         self.loadingView3.hidden = NO;
     }
-
 }
 
 #pragma mark - setter / getter
@@ -95,9 +94,9 @@
     if (!_loadingView2)
     {
         _loadingView2 = [[BALoadingView alloc] init];
-        _loadingView2.backgroundColor = [UIColor whiteColor];
+        _loadingView2.backgroundColor = [UIColor clearColor];
         _loadingView2.loadingType = BALoadingViewTypeWin10;
-        
+        _loadingView2.themColor = [UIColor redColor];
         [self.view addSubview:_loadingView2];
     }
     return _loadingView2;
@@ -108,9 +107,9 @@
     if (!_loadingView3)
     {
         _loadingView3 = [[BALoadingView alloc] init];
-        _loadingView3.backgroundColor = [UIColor yellowColor];
+        _loadingView3.backgroundColor = [UIColor clearColor];
         _loadingView3.loadingType = BALoadingViewTypeBook;
-        
+        _loadingView3.themColor = [UIColor redColor];
         [self.view addSubview:_loadingView3];
     }
     return _loadingView3;

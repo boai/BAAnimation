@@ -49,6 +49,8 @@
 - (void)setupUI
 {
     _loadingType = BALoadingViewTypeBall;
+    _themColor = [UIColor greenColor];
+    _ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self setupAnimateView];
 }
@@ -78,16 +80,15 @@
     self.shapeView7 = [[UIView alloc] init];
     self.shapeView8 = [[UIView alloc] init];
 
-    
-    self.shapeView1.backgroundColor = [UIColor redColor];
-    self.shapeView2.backgroundColor = [UIColor greenColor];
-    self.shapeView3.backgroundColor = [UIColor blueColor];
+    self.shapeView1.backgroundColor = _ballColorsArray[0];
+    self.shapeView2.backgroundColor = _ballColorsArray[1];
+    self.shapeView3.backgroundColor = _ballColorsArray[2];
 
-    self.shapeView4.backgroundColor = [UIColor greenColor];
-    self.shapeView5.backgroundColor = [UIColor greenColor];
-    self.shapeView6.backgroundColor = [UIColor greenColor];
-    self.shapeView7.backgroundColor = [UIColor greenColor];
-    self.shapeView8.backgroundColor = [UIColor greenColor];
+    self.shapeView4.backgroundColor = _themColor;
+    self.shapeView5.backgroundColor = _themColor;
+    self.shapeView6.backgroundColor = _themColor;
+    self.shapeView7.backgroundColor = _themColor;
+    self.shapeView8.backgroundColor = _themColor;
 
     self.shapeView1.layer.cornerRadius = shapeViewcornerRadius;
     self.shapeView2.layer.cornerRadius = shapeViewcornerRadius;
@@ -235,7 +236,24 @@
         default:
             break;
     }
+}
 
+
+- (void)setThemColor:(UIColor *)themColor
+{
+    _themColor = themColor;
+    self.loadingView3.tintColor = themColor;
+    
+    self.shapeView4.backgroundColor = _themColor;
+    self.shapeView5.backgroundColor = _themColor;
+    self.shapeView6.backgroundColor = _themColor;
+    self.shapeView7.backgroundColor = _themColor;
+    self.shapeView8.backgroundColor = _themColor;
+}
+
+- (void)setBallColorsArray:(NSArray<UIColor *> *)ballColorsArray
+{
+    _ballColorsArray = ballColorsArray;
 }
 
 - (UIView *)loadingView1
