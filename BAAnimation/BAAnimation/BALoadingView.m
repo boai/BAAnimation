@@ -116,6 +116,8 @@
 
 - (void)beginAnimation
 {
+    [self updateWithType];
+
     CAKeyframeAnimation *positionAnimation = [CAKeyframeAnimation animation];
     positionAnimation.keyPath = @"position.x";
     positionAnimation.values = @[@-5, @0, @10, @40, @70, @80, @75];
@@ -183,8 +185,6 @@
     [self.shapeView7.layer addAnimation:group2 forKey:nil];
     group2.timeOffset = .8;
     [self.shapeView8.layer addAnimation:group2 forKey:nil];
-    
-    [self.loadingView3 startAnimating];
 }
 
 - (void)layoutSubviews
@@ -223,6 +223,11 @@
 - (void)setLoadingType:(BALoadingViewType)loadingType
 {
     _loadingType = loadingType;
+    [self updateWithType];
+}
+
+- (void)updateWithType
+{
     switch (_loadingType) {
         case BALoadingViewTypeBall:
             self.loadingView1.hidden = NO;
@@ -238,13 +243,13 @@
             self.loadingView1.hidden = YES;
             self.loadingView2.hidden = YES;
             self.loadingView3.hidden = NO;
+            [self.loadingView3 startAnimating];
             break;
             
         default:
             break;
     }
 }
-
 
 - (void)setThemColor:(UIColor *)themColor
 {
