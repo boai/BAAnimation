@@ -50,6 +50,7 @@
 {
     _loadingType = BALoadingViewTypeBall;
     _themColor = [UIColor greenColor];
+    _ballSize = 20;
     _ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self setupAnimateView];
@@ -67,9 +68,6 @@
 
 - (void)setupAnimateView
 {
-    CGFloat shapeViewcornerRadius  = 10;
-    CGFloat shapeViewcornerRadius2 = 8;
-
     self.shapeView1 = [[UIView alloc] init];
     self.shapeView2 = [[UIView alloc] init];
     self.shapeView3 = [[UIView alloc] init];
@@ -90,15 +88,15 @@
     self.shapeView7.backgroundColor = _themColor;
     self.shapeView8.backgroundColor = _themColor;
 
-    self.shapeView1.layer.cornerRadius = shapeViewcornerRadius;
-    self.shapeView2.layer.cornerRadius = shapeViewcornerRadius;
-    self.shapeView3.layer.cornerRadius = shapeViewcornerRadius;
+    self.shapeView1.layer.cornerRadius = _ballSize/2;
+    self.shapeView2.layer.cornerRadius = _ballSize/2;
+    self.shapeView3.layer.cornerRadius = _ballSize/2;
 
-    self.shapeView4.layer.cornerRadius = shapeViewcornerRadius2;
-    self.shapeView5.layer.cornerRadius = shapeViewcornerRadius2;
-    self.shapeView6.layer.cornerRadius = shapeViewcornerRadius2;
-    self.shapeView7.layer.cornerRadius = shapeViewcornerRadius2;
-    self.shapeView8.layer.cornerRadius = shapeViewcornerRadius2;
+    self.shapeView4.layer.cornerRadius = _ballSize/2;
+    self.shapeView5.layer.cornerRadius = _ballSize/2;
+    self.shapeView6.layer.cornerRadius = _ballSize/2;
+    self.shapeView7.layer.cornerRadius = _ballSize/2;
+    self.shapeView8.layer.cornerRadius = _ballSize/2;
 
     
     [self.loadingView1 addSubview:self.shapeView1];
@@ -191,28 +189,28 @@
 {
     [super layoutSubviews];
     
-    CGFloat bigSize = 20;
-    CGFloat smallSize = 16;
-    CGFloat lineSpace = 40;
-    CGFloat minY = (CGRectGetHeight(self.bounds) - bigSize) / 2;
+//    CGFloat bigSize = 20;
+//    CGFloat smallSize = 16;
+
+    CGFloat minY = (CGRectGetHeight(self.bounds) - _ballSize) / 2;
     CGFloat minX = (CGRectGetWidth(self.bounds) - 100) / 2;
     
     _loadingView1.frame = self.bounds;
     _loadingView2.frame = self.bounds;
 //    _loadingView3.frame = self.bounds;
 
-    self.shapeView1.frame = CGRectMake(minX, minY, bigSize, bigSize);
-    self.shapeView2.frame = CGRectMake(minX, minY, bigSize, bigSize);
-    self.shapeView3.frame = CGRectMake(minX, minY, bigSize, bigSize);
+    self.shapeView1.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    self.shapeView2.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    self.shapeView3.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
 
-    minY = (CGRectGetHeight(self.bounds) - smallSize) / 2;
+    minY = (CGRectGetHeight(self.bounds) - _ballSize/2) / 2;
     minX = (CGRectGetWidth(self.bounds) - 220) / 2;
     
-    self.shapeView4.frame = CGRectMake(minX, minY, smallSize, smallSize);
-    self.shapeView5.frame = CGRectMake(minX, minY, smallSize, smallSize);
-    self.shapeView6.frame = CGRectMake(minX, minY, smallSize, smallSize);
-    self.shapeView7.frame = CGRectMake(minX, minY, smallSize, smallSize);
-    self.shapeView8.frame = CGRectMake(minX, minY, smallSize, smallSize);
+    self.shapeView4.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    self.shapeView5.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    self.shapeView6.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    self.shapeView7.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    self.shapeView8.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
 
     minX = self.frame.size.width/2 - CGRectGetWidth(self.loadingView3.bounds)/2;
     minY = self.frame.size.height/2 - CGRectGetHeight(self.loadingView3.bounds)/2;;
@@ -271,6 +269,23 @@
     self.shapeView1.backgroundColor = _ballColorsArray[0];
     self.shapeView2.backgroundColor = _ballColorsArray[1];
     self.shapeView3.backgroundColor = _ballColorsArray[2];
+}
+
+- (void)setBallSize:(CGFloat)ballSize
+{
+    _ballSize = ballSize;
+    
+    [self layoutSubviews];
+    
+    self.shapeView1.layer.cornerRadius = ballSize;
+    self.shapeView2.layer.cornerRadius = ballSize;
+    self.shapeView3.layer.cornerRadius = ballSize;
+    
+    self.shapeView4.layer.cornerRadius = ballSize;
+    self.shapeView5.layer.cornerRadius = ballSize;
+    self.shapeView6.layer.cornerRadius = ballSize;
+    self.shapeView7.layer.cornerRadius = ballSize;
+    self.shapeView8.layer.cornerRadius = ballSize;
 }
 
 - (UIView *)loadingView1

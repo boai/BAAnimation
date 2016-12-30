@@ -28,6 +28,8 @@ typedef NS_ENUM(NSUInteger, BALoadingViewType) {
 /*! 样式 2 和 样式 3 的主题颜色，默认：2为绿色，3为灰色 */
 @property (nonatomic, strong) UIColor *themColor;
 
+/*! 样式 1 和 样式 2 的小球的大小，默认：20 */
+@property (nonatomic, assign) CGFloat ballSize;
 
 
 @end

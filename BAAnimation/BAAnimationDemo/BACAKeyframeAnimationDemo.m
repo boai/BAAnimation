@@ -83,7 +83,8 @@
         _loadingView1 = [[BALoadingView alloc] init];
         _loadingView1.backgroundColor = [UIColor clearColor];
         _loadingView1.loadingType = BALoadingViewTypeBall;
-        
+        _loadingView2.ballSize = 50;
+
         [self.view addSubview:_loadingView1];
     }
     return _loadingView1;
@@ -97,6 +98,8 @@
         _loadingView2.backgroundColor = [UIColor clearColor];
         _loadingView2.loadingType = BALoadingViewTypeWin10;
         _loadingView2.themColor = [UIColor redColor];
+        _loadingView2.ballSize = 10;
+        
         [self.view addSubview:_loadingView2];
     }
     return _loadingView2;
