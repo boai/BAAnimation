@@ -222,10 +222,12 @@
         case BALoadingViewTypeBall:
             self.loadingView1.hidden = NO;
             self.loadingView2.hidden = YES;
+            self.loadingView3.hidden = YES;
             break;
         case BALoadingViewTypeWin10:
             self.loadingView1.hidden = YES;
             self.loadingView2.hidden = NO;
+            self.loadingView3.hidden = YES;
             break;
         case BALoadingViewTypeBook:
             self.loadingView1.hidden = YES;
