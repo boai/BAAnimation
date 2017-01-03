@@ -113,7 +113,7 @@
     {
         _loadingView2 = [[BALoadingView alloc] init];
         /*! 可以自定义动画背景颜色 */
-        _loadingView2.backgroundColor = [UIColor yellowColor];
+        _loadingView2.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
         /*! 可以自定义动画样式 */
         _loadingView2.loadingType = BALoadingViewTypeWin10;
         /*! 可以自定义小球背景颜色 */
