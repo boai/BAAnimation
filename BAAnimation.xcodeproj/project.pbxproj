@@ -23,6 +23,7 @@
 		C49D10EC1E1B411A00962F14 /* BAActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C49D10E61E1B411A00962F14 /* BAActivityIndicatorView.m */; };
 		C49D10ED1E1B411A00962F14 /* BALoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C49D10E81E1B411A00962F14 /* BALoadingView.m */; };
 		C49D10EE1E1B411A00962F14 /* UIView+BAAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C49D10EB1E1B411A00962F14 /* UIView+BAAnimation.m */; };
+		C49D10F21E1B46AD00962F14 /* BALoadingWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = C49D10F11E1B46AD00962F14 /* BALoadingWaveView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,8 @@
 		C49D10E81E1B411A00962F14 /* BALoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BALoadingView.m; sourceTree = "<group>"; };
 		C49D10EA1E1B411A00962F14 /* UIView+BAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BAAnimation.h"; sourceTree = "<group>"; };
 		C49D10EB1E1B411A00962F14 /* UIView+BAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BAAnimation.m"; sourceTree = "<group>"; };
+		C49D10F01E1B46AD00962F14 /* BALoadingWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BALoadingWaveView.h; sourceTree = "<group>"; };
+		C49D10F11E1B46AD00962F14 /* BALoadingWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BALoadingWaveView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				C49D10E61E1B411A00962F14 /* BAActivityIndicatorView.m */,
 				C49D10E71E1B411A00962F14 /* BALoadingView.h */,
 				C49D10E81E1B411A00962F14 /* BALoadingView.m */,
+				C49D10F01E1B46AD00962F14 /* BALoadingWaveView.h */,
+				C49D10F11E1B46AD00962F14 /* BALoadingWaveView.m */,
 			);
 			path = BALoadingView;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C40A65BE1E16652D0001E111 /* DemoVC_09_Detail.m in Sources */,
+				C49D10F21E1B46AD00962F14 /* BALoadingWaveView.m in Sources */,
 				C42FF2201E077B6C00E29DD5 /* DemoVC_09.m in Sources */,
 				C42FF2061E077AF100E29DD5 /* AppDelegate.m in Sources */,
 				C49D10EC1E1B411A00962F14 /* BAActivityIndicatorView.m in Sources */,
