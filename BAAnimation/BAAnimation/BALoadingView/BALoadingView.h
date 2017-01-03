@@ -22,13 +22,13 @@ typedef NS_ENUM(NSUInteger, BALoadingViewType) {
 /*! 加载动画的样式 */
 @property (nonatomic, assign) BALoadingViewType loadingType;
 
-/*! 样式1 的颜色数组，默认为：@[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
+/*! 仅限样式1 的颜色数组，默认为：@[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
  */
 @property (nonatomic, strong) NSArray <UIColor *>*ballColorsArray;
-/*! 样式 2 和 样式 3 的主题颜色，默认：2为绿色，3为灰色 */
+/*! 仅限样式 2 和 样式 3 的主题颜色，默认：2为绿色，3为灰色 */
 @property (nonatomic, strong) UIColor *themColor;
 
-/*! 样式 1 和 样式 2 的小球的大小，默认：20 */
+/*! 仅限样式 1 和 样式 2 的小球的大小【0-30之间最佳】，默认：20 */
 @property (nonatomic, assign) CGFloat ballSize;
 
 

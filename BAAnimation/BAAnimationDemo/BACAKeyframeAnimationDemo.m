@@ -57,6 +57,7 @@
     _lineView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:_lineView];
     
+    /*! 显示 */
     if (0 == _animationType)
     {
         self.loadingView1.hidden = NO;
@@ -75,6 +76,15 @@
         self.loadingView2.hidden = YES;
         self.loadingView3.hidden = NO;
     }
+    
+    /*! 隐藏 */
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        self.loadingView1.hidden = YES;
+        self.loadingView2.hidden = YES;
+        self.loadingView3.hidden = YES;
+    });
+    
 }
 
 #pragma mark - setter / getter
@@ -83,9 +93,12 @@
     if (!_loadingView1)
     {
         _loadingView1 = [[BALoadingView alloc] init];
+        /*! 可以自定义动画背景颜色 */
         _loadingView1.backgroundColor = [UIColor clearColor];
+        /*! 可以自定义动画样式 */
         _loadingView1.loadingType = BALoadingViewTypeBall;
-//        _loadingView2.ballSize = 50;
+        /*! 可以自定义小球大小 */
+//        _loadingView1.ballSize = 25;
         /*! 可以自定义小球颜色 */
 //        _loadingView1.ballColorsArray = @[[UIColor yellowColor], [UIColor redColor], [UIColor cyanColor]];
 
@@ -99,9 +112,13 @@
     if (!_loadingView2)
     {
         _loadingView2 = [[BALoadingView alloc] init];
-        _loadingView2.backgroundColor = [UIColor clearColor];
+        /*! 可以自定义动画背景颜色 */
+        _loadingView2.backgroundColor = [UIColor yellowColor];
+        /*! 可以自定义动画样式 */
         _loadingView2.loadingType = BALoadingViewTypeWin10;
+        /*! 可以自定义小球背景颜色 */
 //        _loadingView2.themColor = [UIColor redColor];
+        /*! 可以自定义小球大小 */
 //        _loadingView2.ballSize = 15;
         
         [self.view addSubview:_loadingView2];
@@ -114,9 +131,13 @@
     if (!_loadingView3)
     {
         _loadingView3 = [[BALoadingView alloc] init];
+        /*! 可以自定义动画背景颜色【此样式最好设置 clearColor，以免和主题颜色重叠】 */
         _loadingView3.backgroundColor = [UIColor clearColor];
+        /*! 可以自定义动画样式 */
         _loadingView3.loadingType = BALoadingViewTypeBook;
-        _loadingView3.themColor = [UIColor redColor];
+        /*! 可以自定义主题背景颜色 */
+//        _loadingView3.themColor = [UIColor redColor];
+        
         [self.view addSubview:_loadingView3];
     }
     return _loadingView3;

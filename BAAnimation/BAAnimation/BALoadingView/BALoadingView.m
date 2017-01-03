@@ -48,11 +48,10 @@
 
 - (void)setupUI
 {
-    _loadingType = BALoadingViewTypeBall;
-    _themColor = [UIColor greenColor];
-    _ballSize = 20;
-    
-    _ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
+    self.loadingType = BALoadingViewTypeBall;
+//    self.themColor = [UIColor colorWithRed:0 green:165 blue:255 alpha:1.0f];
+    self.ballSize = 20;
+    self.ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self setupAnimateView];
@@ -81,7 +80,8 @@
     self.shapeView8 = [[UIView alloc] init];
 
     [self ba_setBallColor];
-    
+    [self ba_setBallCornerRadius];
+
     [self.loadingView1 addSubview:self.shapeView1];
     [self.loadingView1 addSubview:self.shapeView2];
     [self.loadingView1 addSubview:self.shapeView3];
@@ -92,6 +92,7 @@
     [self.loadingView2 addSubview:self.shapeView7];
     [self.loadingView2 addSubview:self.shapeView8];
     
+
     [self beginAnimation];
 }
 
@@ -194,17 +195,6 @@
     self.shapeView6.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView7.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView8.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
-
-    self.shapeView1.layer.cornerRadius = _ballSize / 2;
-    self.shapeView2.layer.cornerRadius = _ballSize / 2;
-    self.shapeView3.layer.cornerRadius = _ballSize / 2;
-    
-    self.shapeView4.layer.cornerRadius = _ballSize / 2;
-    self.shapeView5.layer.cornerRadius = _ballSize / 2;
-    self.shapeView6.layer.cornerRadius = _ballSize / 2;
-    self.shapeView7.layer.cornerRadius = _ballSize / 2;
-    self.shapeView8.layer.cornerRadius = _ballSize / 2;
-
     
     minX = self.frame.size.width/2 - CGRectGetWidth(self.loadingView3.bounds) / 2;
     minY = self.frame.size.height/2 - CGRectGetHeight(self.loadingView3.bounds) / 2;;
@@ -230,11 +220,13 @@
             self.loadingView1.hidden = YES;
             self.loadingView2.hidden = NO;
             self.loadingView3.hidden = YES;
+            self.themColor = [UIColor cyanColor];
             break;
         case BALoadingViewTypeBook:
             self.loadingView1.hidden = YES;
             self.loadingView2.hidden = YES;
             self.loadingView3.hidden = NO;
+            self.themColor = [UIColor lightGrayColor];
             [self.loadingView3 startAnimating];
             break;
             
@@ -260,7 +252,6 @@
 
 - (void)ba_setBallColor
 {
-
     if (_ballColorsArray.count < 3)
     {
         _ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
@@ -276,21 +267,34 @@
     self.shapeView8.backgroundColor = _themColor;
 }
 
+- (void)ba_setBallCornerRadius
+{
+    self.shapeView1.layer.cornerRadius = _ballSize / 2;
+    self.shapeView2.layer.cornerRadius = _ballSize / 2;
+    self.shapeView3.layer.cornerRadius = _ballSize / 2;
+    
+    self.shapeView4.layer.cornerRadius = _ballSize / 2;
+    self.shapeView5.layer.cornerRadius = _ballSize / 2;
+    self.shapeView6.layer.cornerRadius = _ballSize / 2;
+    self.shapeView7.layer.cornerRadius = _ballSize / 2;
+    self.shapeView8.layer.cornerRadius = _ballSize / 2;
+    
+    self.shapeView1.layer.masksToBounds = YES;
+    self.shapeView2.layer.masksToBounds = YES;
+    self.shapeView3.layer.masksToBounds = YES;
+    
+    self.shapeView4.layer.masksToBounds = YES;
+    self.shapeView5.layer.masksToBounds = YES;
+    self.shapeView6.layer.masksToBounds = YES;
+    self.shapeView7.layer.masksToBounds = YES;
+    self.shapeView8.layer.masksToBounds = YES;
+    [self ba_setBallColor];
+}
+
 - (void)setBallSize:(CGFloat)ballSize
 {
     _ballSize = ballSize;
-    
-    [self layoutSubviews];
-    
-    self.shapeView1.layer.cornerRadius = ballSize;
-    self.shapeView2.layer.cornerRadius = ballSize;
-    self.shapeView3.layer.cornerRadius = ballSize;
-    
-    self.shapeView4.layer.cornerRadius = ballSize;
-    self.shapeView5.layer.cornerRadius = ballSize;
-    self.shapeView6.layer.cornerRadius = ballSize;
-    self.shapeView7.layer.cornerRadius = ballSize;
-    self.shapeView8.layer.cornerRadius = ballSize;
+    [self ba_setBallCornerRadius];
 }
 
 - (UIView *)loadingView1
