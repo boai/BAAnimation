@@ -51,7 +51,9 @@
     _loadingType = BALoadingViewTypeBall;
     _themColor = [UIColor greenColor];
     _ballSize = 20;
+    
     _ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleWillEnterForeground:) name:UIApplicationWillEnterForegroundNotification object:nil];
     [self setupAnimateView];
 }
@@ -78,26 +80,7 @@
     self.shapeView7 = [[UIView alloc] init];
     self.shapeView8 = [[UIView alloc] init];
 
-    self.shapeView1.backgroundColor = _ballColorsArray[0];
-    self.shapeView2.backgroundColor = _ballColorsArray[1];
-    self.shapeView3.backgroundColor = _ballColorsArray[2];
-
-    self.shapeView4.backgroundColor = _themColor;
-    self.shapeView5.backgroundColor = _themColor;
-    self.shapeView6.backgroundColor = _themColor;
-    self.shapeView7.backgroundColor = _themColor;
-    self.shapeView8.backgroundColor = _themColor;
-
-    self.shapeView1.layer.cornerRadius = _ballSize/2;
-    self.shapeView2.layer.cornerRadius = _ballSize/2;
-    self.shapeView3.layer.cornerRadius = _ballSize/2;
-
-    self.shapeView4.layer.cornerRadius = _ballSize/2;
-    self.shapeView5.layer.cornerRadius = _ballSize/2;
-    self.shapeView6.layer.cornerRadius = _ballSize/2;
-    self.shapeView7.layer.cornerRadius = _ballSize/2;
-    self.shapeView8.layer.cornerRadius = _ballSize/2;
-
+    [self ba_setBallColor];
     
     [self.loadingView1 addSubview:self.shapeView1];
     [self.loadingView1 addSubview:self.shapeView2];
@@ -203,7 +186,7 @@
     self.shapeView2.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView3.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
 
-    minY = (CGRectGetHeight(self.bounds) - _ballSize/2) / 2;
+    minY = (CGRectGetHeight(self.bounds) - _ballSize / 2) / 2;
     minX = (CGRectGetWidth(self.bounds) - 220) / 2;
     
     self.shapeView4.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
@@ -212,8 +195,19 @@
     self.shapeView7.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView8.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
 
-    minX = self.frame.size.width/2 - CGRectGetWidth(self.loadingView3.bounds)/2;
-    minY = self.frame.size.height/2 - CGRectGetHeight(self.loadingView3.bounds)/2;;
+    self.shapeView1.layer.cornerRadius = _ballSize / 2;
+    self.shapeView2.layer.cornerRadius = _ballSize / 2;
+    self.shapeView3.layer.cornerRadius = _ballSize / 2;
+    
+    self.shapeView4.layer.cornerRadius = _ballSize / 2;
+    self.shapeView5.layer.cornerRadius = _ballSize / 2;
+    self.shapeView6.layer.cornerRadius = _ballSize / 2;
+    self.shapeView7.layer.cornerRadius = _ballSize / 2;
+    self.shapeView8.layer.cornerRadius = _ballSize / 2;
+
+    
+    minX = self.frame.size.width/2 - CGRectGetWidth(self.loadingView3.bounds) / 2;
+    minY = self.frame.size.height/2 - CGRectGetHeight(self.loadingView3.bounds) / 2;;
 
     self.loadingView3.frame = CGRectMake(minX, minY, CGRectGetWidth(self.loadingView3.bounds), CGRectGetHeight(self.loadingView3.bounds));
 }
@@ -255,20 +249,31 @@
     
     self.loadingView3.tintColor = themColor;
     
-    self.shapeView4.backgroundColor = _themColor;
-    self.shapeView5.backgroundColor = _themColor;
-    self.shapeView6.backgroundColor = _themColor;
-    self.shapeView7.backgroundColor = _themColor;
-    self.shapeView8.backgroundColor = _themColor;
+    [self ba_setBallColor];
 }
 
 - (void)setBallColorsArray:(NSArray<UIColor *> *)ballColorsArray
 {
     _ballColorsArray = ballColorsArray;
-    
+    [self ba_setBallColor];
+}
+
+- (void)ba_setBallColor
+{
+
+    if (_ballColorsArray.count < 3)
+    {
+        _ballColorsArray = @[[UIColor greenColor], [UIColor redColor], [UIColor blueColor]];
+    }
     self.shapeView1.backgroundColor = _ballColorsArray[0];
     self.shapeView2.backgroundColor = _ballColorsArray[1];
     self.shapeView3.backgroundColor = _ballColorsArray[2];
+
+    self.shapeView4.backgroundColor = _themColor;
+    self.shapeView5.backgroundColor = _themColor;
+    self.shapeView6.backgroundColor = _themColor;
+    self.shapeView7.backgroundColor = _themColor;
+    self.shapeView8.backgroundColor = _themColor;
 }
 
 - (void)setBallSize:(CGFloat)ballSize

@@ -19,6 +19,9 @@
 
 @interface BACAKeyframeAnimationDemo ()
 
+/*!  */
+@property (nonatomic, strong) UIView *lineView;
+
 @property (nonatomic, strong) BALoadingView *loadingView1;
 @property (nonatomic, strong) BALoadingView *loadingView2;
 @property (nonatomic, strong) BALoadingView *loadingView3;
@@ -50,10 +53,9 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIView *lineView = [UIView new];
-    lineView.frame = CGRectMake(BA_SCREEN_WIDTH / 2 - 0.5, 64, 1, BA_SCREEN_HEIGHT);
-    lineView.backgroundColor = [UIColor lightGrayColor];
-    [self.view addSubview:lineView];
+    _lineView = [UIView new];
+    _lineView.backgroundColor = [UIColor lightGrayColor];
+    [self.view addSubview:_lineView];
     
     if (0 == _animationType)
     {
@@ -83,7 +85,9 @@
         _loadingView1 = [[BALoadingView alloc] init];
         _loadingView1.backgroundColor = [UIColor clearColor];
         _loadingView1.loadingType = BALoadingViewTypeBall;
-        _loadingView2.ballSize = 50;
+//        _loadingView2.ballSize = 50;
+        /*! 可以自定义小球颜色 */
+//        _loadingView1.ballColorsArray = @[[UIColor yellowColor], [UIColor redColor], [UIColor cyanColor]];
 
         [self.view addSubview:_loadingView1];
     }
@@ -97,8 +101,8 @@
         _loadingView2 = [[BALoadingView alloc] init];
         _loadingView2.backgroundColor = [UIColor clearColor];
         _loadingView2.loadingType = BALoadingViewTypeWin10;
-        _loadingView2.themColor = [UIColor redColor];
-        _loadingView2.ballSize = 10;
+//        _loadingView2.themColor = [UIColor redColor];
+//        _loadingView2.ballSize = 15;
         
         [self.view addSubview:_loadingView2];
     }
@@ -121,10 +125,12 @@
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
+    
     CGFloat lodingViewSizeWidth  = 200;
-    CGFloat lodingViewSizeHeight = 100;
-    CGFloat lodingViewSpace = 20;
+    CGFloat lodingViewSizeHeight = BA_SCREEN_HEIGHT * 0.15;
+    CGFloat lodingViewSpace = 10;
 
+    _lineView.frame = CGRectMake(self.view.center.x - 0.5, 0, 1, BA_SCREEN_HEIGHT);
     _loadingView1.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, 64 + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
     _loadingView2.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, CGRectGetMaxY(_loadingView1.frame) + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
     _loadingView3.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, CGRectGetMaxY(_loadingView2.frame) + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);

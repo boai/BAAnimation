@@ -32,4 +32,5 @@ typedef NS_ENUM(NSUInteger, BALoadingViewType) {
 @property (nonatomic, assign) CGFloat ballSize;
 
 
+
 @end
