@@ -92,7 +92,6 @@
     self.shapeView10 = [[UIView alloc] init];
     self.shapeView11 = [[UIView alloc] init];
 
-    
     [self ba_setBallColor];
     [self ba_setBallCornerRadius];
 
@@ -110,8 +109,10 @@
     [self.loadingView4 addSubview:self.shapeView10];
     [self.loadingView4 addSubview:self.shapeView11];
     
+    self.shapeView10.backgroundColor = [UIColor blackColor];
 
     [self beginAnimation];
+
 }
 
 - (void)beginAnimation
@@ -191,11 +192,11 @@
 {
     /*! 三个小球旋转动画 */
     // 1.1 取得围绕中心轴的点
-    CGPoint centerPoint = CGPointMake(BA_SCREEN_WIDTH / 2 , BA_SCREEN_HEIGHT / 2);
+    CGPoint centerPoint = CGPointMake(CGRectGetWidth(self.bounds) / 2 , CGRectGetHeight(self.bounds) / 2);
     // 1.2 获得第一个圆的中点
-    CGPoint centerBall_1 = CGPointMake(BA_SCREEN_WIDTH / 2 - _ballSize, BA_SCREEN_HEIGHT/2);
+    CGPoint centerBall_1 = CGPointMake(centerPoint.x - _ballSize, centerPoint.y);
     // 1.3 获得第三个圆的中点
-    CGPoint centerBall_2 = CGPointMake(BA_SCREEN_WIDTH / 2 + _ballSize, BA_SCREEN_HEIGHT / 2);
+    CGPoint centerBall_2 = CGPointMake(centerPoint.x + _ballSize, centerPoint.y);
     
     // 2.1 第1个圆的曲线
     UIBezierPath *path_ball_1 = [UIBezierPath bezierPath];
@@ -279,21 +280,23 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
-//    CGFloat bigSize = 20;
-//    CGFloat smallSize = 16;
 
     CGFloat minY = (CGRectGetHeight(self.bounds) - _ballSize) / 2;
     CGFloat minX = (CGRectGetWidth(self.bounds) - 100) / 2;
     
     _loadingView1.frame = self.bounds;
     _loadingView2.frame = self.bounds;
-//    _loadingView3.frame = self.bounds;
     _loadingView4.frame = self.bounds;
 
     self.shapeView1.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView2.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView3.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    
+    minX = self.frame.size.width/2 - CGRectGetWidth(self.loadingView3.bounds) / 2;
+    minY = self.frame.size.height/2 - CGRectGetHeight(self.loadingView3.bounds) / 2;;
+    
+    self.loadingView3.frame = CGRectMake(minX, minY, CGRectGetWidth(self.loadingView3.bounds), CGRectGetHeight(self.loadingView3.bounds));
+
 
     minY = (CGRectGetHeight(self.bounds) - _ballSize / 2) / 2;
     minX = (CGRectGetWidth(self.bounds) - 220) / 2;
@@ -304,19 +307,16 @@
     self.shapeView7.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     self.shapeView8.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
     
-    minX = self.frame.size.width/2 - CGRectGetWidth(self.loadingView3.bounds) / 2;
-    minY = self.frame.size.height/2 - CGRectGetHeight(self.loadingView3.bounds) / 2;;
-
-    self.loadingView3.frame = CGRectMake(minX, minY, CGRectGetWidth(self.loadingView3.bounds), CGRectGetHeight(self.loadingView3.bounds));
-    
     minY = (CGRectGetHeight(self.bounds) - _ballSize) / 2;
-    minX = BA_SCREEN_WIDTH/2 - _ballSize * 1.5;
+    minX = CGRectGetWidth(self.bounds)/2 - _ballSize * 1.5;
     
     self.shapeView9.frame  = CGRectMake(minX, minY, _ballSize, _ballSize);
-    minX = BA_SCREEN_WIDTH/2 - _ballSize * 0.5;
+    minX = CGRectGetWidth(self.bounds)/2 - _ballSize * 0.5;
     self.shapeView10.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
-    minX = BA_SCREEN_WIDTH/2 + _ballSize * 0.5;
+    minX = CGRectGetWidth(self.bounds)/2 + _ballSize * 0.5;
     self.shapeView11.frame = CGRectMake(minX, minY, _ballSize, _ballSize);
+    
+    [self ba_beginBallRotationAnimation];
 }
 
 - (void)setLoadingType:(BALoadingViewType)loadingType
@@ -341,7 +341,6 @@
             self.loadingView3.hidden = YES;
             self.loadingView4.hidden = NO;
             self.themColor = [UIColor redColor];
-            [self ba_beginBallRotationAnimation];
             break;
             
         case BALoadingViewTypeWin10:

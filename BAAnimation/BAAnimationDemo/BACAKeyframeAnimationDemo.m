@@ -84,9 +84,9 @@
     /*! 隐藏 */
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
-        self.loadingView1.hidden = YES;
-        self.loadingView2.hidden = YES;
-        self.loadingView3.hidden = YES;
+//        self.loadingView1.hidden = YES;
+//        self.loadingView2.hidden = YES;
+//        self.loadingView3.hidden = YES;
     });
     
 }
@@ -178,7 +178,7 @@
     _loadingView1.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, 64 + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
     _loadingView2.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, CGRectGetMaxY(_loadingView1.frame) + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
     _loadingView3.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, CGRectGetMaxY(_loadingView2.frame) + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
-    _loadingView3.frame = _loadingView2.frame;
+    _loadingView4.frame = _loadingView2.frame;
 
 }
 
