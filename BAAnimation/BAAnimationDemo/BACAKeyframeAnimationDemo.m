@@ -8,14 +8,7 @@
 
 #import "BACAKeyframeAnimationDemo.h"
 #import "BALoadingView.h"
-
-/**
- *  获取屏幕宽度和高度
- */
-#define BA_SCREEN_WIDTH ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height)
-#define BA_SCREEN_HEIGHT ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
-
-
+#import "BAAnimationHeader.h"
 
 @interface BACAKeyframeAnimationDemo ()
 
@@ -25,6 +18,7 @@
 @property (nonatomic, strong) BALoadingView *loadingView1;
 @property (nonatomic, strong) BALoadingView *loadingView2;
 @property (nonatomic, strong) BALoadingView *loadingView3;
+@property (nonatomic, strong) BALoadingView *loadingView4;
 
 @end
 
@@ -63,18 +57,28 @@
         self.loadingView1.hidden = NO;
         self.loadingView2.hidden = YES;
         self.loadingView3.hidden = YES;
+        self.loadingView4.hidden = YES;
     }
     else if (1 == _animationType)
     {
         self.loadingView1.hidden = YES;
         self.loadingView2.hidden = NO;
         self.loadingView3.hidden = YES;
+        self.loadingView4.hidden = YES;
     }
     else if (2 == _animationType)
     {
         self.loadingView1.hidden = YES;
         self.loadingView2.hidden = YES;
         self.loadingView3.hidden = NO;
+        self.loadingView4.hidden = YES;
+    }
+    else if (3 == _animationType)
+    {
+        self.loadingView1.hidden = YES;
+        self.loadingView2.hidden = YES;
+        self.loadingView3.hidden = YES;
+        self.loadingView4.hidden = NO;
     }
     
     /*! 隐藏 */
@@ -143,6 +147,25 @@
     return _loadingView3;
 }
 
+- (BALoadingView *)loadingView4
+{
+    if (!_loadingView4)
+    {
+        _loadingView4 = [[BALoadingView alloc] init];
+        /*! 可以自定义动画背景颜色 */
+        _loadingView4.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
+        /*! 可以自定义动画样式 */
+        _loadingView4.loadingType = BALoadingViewTypeBallRotation;
+        /*! 可以自定义小球背景颜色 */
+        _loadingView4.themColor = [UIColor redColor];
+        /*! 可以自定义小球大小 */
+        _loadingView4.ballSize = 15;
+        
+        [self.view addSubview:_loadingView4];
+    }
+    return _loadingView4;
+}
+
 - (void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
@@ -155,6 +178,7 @@
     _loadingView1.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, 64 + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
     _loadingView2.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, CGRectGetMaxY(_loadingView1.frame) + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
     _loadingView3.frame = CGRectMake(self.view.center.x - lodingViewSizeWidth/2, CGRectGetMaxY(_loadingView2.frame) + lodingViewSpace, lodingViewSizeWidth, lodingViewSizeHeight);
+    _loadingView3.frame = _loadingView2.frame;
 
 }
 
