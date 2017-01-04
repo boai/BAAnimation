@@ -191,14 +191,14 @@
 - (void)ba_beginBallRotationAnimation
 {
     /*! 三个小球旋转动画 */
-    // 1.1 取得围绕中心轴的点
+    /*! 1.1 取得围绕中心轴的点 */
     CGPoint centerPoint = CGPointMake(CGRectGetWidth(self.bounds) / 2 , CGRectGetHeight(self.bounds) / 2);
-    // 1.2 获得第一个圆的中点
+    /*! 1.2 获得第一个圆的中点 */
     CGPoint centerBall_1 = CGPointMake(centerPoint.x - _ballSize, centerPoint.y);
-    // 1.3 获得第三个圆的中点
+    /*! 1.3 获得第三个圆的中点 */
     CGPoint centerBall_2 = CGPointMake(centerPoint.x + _ballSize, centerPoint.y);
     
-    // 2.1 第1个圆的曲线
+    /*! 2.1 第1个圆的曲线 */
     UIBezierPath *path_ball_1 = [UIBezierPath bezierPath];
     [path_ball_1 moveToPoint:centerBall_1];
     
@@ -207,7 +207,7 @@
     [path_ball_1_1 addArcWithCenter:centerPoint radius:_ballSize startAngle:0 endAngle:M_PI clockwise:NO];
     [path_ball_1 appendPath:path_ball_1_1];
     
-    // 2.2 第1个圆的动画
+    /*! 2.2 第1个圆的动画 */
     CAKeyframeAnimation *animation_ball_1=[CAKeyframeAnimation animationWithKeyPath:@"position"];
     animation_ball_1.path = path_ball_1.CGPath;
     animation_ball_1.removedOnCompletion = NO;
@@ -257,17 +257,17 @@
 {
     if (_loadingType == BALoadingViewTypeBallRotation)
     {
-        [UIView animateWithDuration:0.3 delay:0.1 options:UIViewAnimationOptionCurveEaseOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
+        [UIView animateWithDuration:0.3f delay:0.1f options:UIViewAnimationOptionCurveEaseOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
             
             self.shapeView9.transform = CGAffineTransformMakeTranslation(-_ballSize, 0);
-            self.shapeView9.transform = CGAffineTransformScale(self.shapeView9.transform, 0.7, 0.7);
+            self.shapeView9.transform = CGAffineTransformScale(self.shapeView9.transform, 0.6f, 0.6f);
             
             self.shapeView11.transform = CGAffineTransformMakeTranslation(_ballSize, 0);
-            self.shapeView11.transform = CGAffineTransformScale(self.shapeView11.transform, 0.7, 0.7);
+            self.shapeView11.transform = CGAffineTransformScale(self.shapeView11.transform, 0.6f, 0.6f);
             
-            self.shapeView10.transform = CGAffineTransformScale(self.shapeView10.transform, 0.7, 0.7);
+            self.shapeView10.transform = CGAffineTransformScale(self.shapeView10.transform, 0.6f, 0.6f);
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.3 delay:0.1 options:UIViewAnimationOptionCurveEaseIn  | UIViewAnimationOptionBeginFromCurrentState animations:^{
+            [UIView animateWithDuration:0.3f delay:0.1f options:UIViewAnimationOptionCurveEaseIn  | UIViewAnimationOptionBeginFromCurrentState animations:^{
                 self.shapeView9.transform = CGAffineTransformIdentity;
                 self.shapeView10.transform = CGAffineTransformIdentity;
                 self.shapeView11.transform = CGAffineTransformIdentity;
