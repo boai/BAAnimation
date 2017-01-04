@@ -10,6 +10,7 @@
 #import "DemoVC_09_Detail.h"
 #import "BACABasicAnimationDemo.h"
 #import "BACAKeyframeAnimationDemo.h"
+#import "BADownloadViewDemo.h"
 
 
 /**
@@ -97,9 +98,9 @@
     }
     else if (4 == indexPath.section)
     {
-        DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
-        vc.title = @"CAAnimationGroup 组动画";
-        vc.animationType = @(indexPath.row).intValue;
+        BADownloadViewDemo *vc = [BADownloadViewDemo new];
+//        vc.title = @"其他动画";
+//        vc.animationType = @(indexPath.row).intValue;
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
@@ -134,7 +135,7 @@
     }
     else if (4 == section)
     {
-        title = @"CAAnimationGroup 组动画";
+        title = @"其他动画";
     }
     titleLabel.text = title;
     return headView;
@@ -210,7 +211,7 @@
                          @{
                              DemoVC_09_title : @[
                                      @{
-                                         @"name":@"1、缩放动画"
+                                         @"name":@"1、下载动画-水波纹"
                                          },
                                      @{
                                          @"name":@"2、拉伸变化"

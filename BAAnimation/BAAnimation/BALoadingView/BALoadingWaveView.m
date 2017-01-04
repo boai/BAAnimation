@@ -42,54 +42,52 @@
  如果想在0到2π这个距离显示2个完整的波曲线，那么周期就是π.如果每次增加π/4,则4s就会完成一个周期.
  如果想要在width上来宽度上展示2个周期的水波,则周期是waveWidth / 2,w = 2 * M_PI / waveWidth
  */
-- (instancetype)initWithFrame:(CGRect)frame
+
+- (instancetype)init
 {
-    if (self = [super initWithFrame:frame])
+    if (self = [super init])
     {
-        [self setupUIWithFrame:frame];
+        [self setupUI];
     }
     return self;
 }
 
-- (void)setupUIWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self.bounds = CGRectMake(0, 0, MIN(frame.size.width, frame.size.height), MIN(frame.size.width, frame.size.height));
-    self.layer.cornerRadius = MIN(frame.size.width, frame.size.height) * 0.5;
-    self.layer.masksToBounds = YES;
-    self.layer.borderWidth = 1.0f;
-    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    
+    if (self = [super initWithFrame:frame])
+    {
+        [self setupUI];
+    }
+    return self;
+}
+
+- (void)setupUI
+{
+    /*! 默认值 */
     self.waveHeight = 5.0f;
     self.waveColor = [UIColor greenColor];
     self.yHeight = self.bounds.size.height;
+
+    self.waveLayer.hidden = NO;
+    self.label.hidden = NO;
     
-    self.waveLayer = [CAShapeLayer layer];
-    self.waveLayer.frame = self.bounds;
-    self.waveLayer.fillColor = [UIColor whiteColor].CGColor;
-    [self.layer addSublayer:self.waveLayer];
-    
-    self.label = [[UILabel alloc] init];
-    self.label.frame = CGRectMake(0, 0, 40, 40);
-    self.label.font = [UIFont systemFontOfSize:20.0f];
-    self.label.textAlignment = NSTextAlignmentCenter;
-    self.label.textColor = [UIColor orangeColor];
-    
-    [self addSubview:self.label];
-    self.label.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 }
 
-- (void)setProgress:(CGFloat)progress
+- (void)layoutSubviews
 {
-    _progress = progress;
-    /*! 将进度转成百分比. */
-    self.label.text = [NSString stringWithFormat:@"%ld%%", [[NSNumber numberWithFloat:progress * 100] integerValue]];
-    [self.label sizeToFit];
+    [super layoutSubviews];
     
-    /*! 由于y坐标轴的方向是由上向下,逐渐增加的,所以这里对于y坐标进行处理 */
-    self.yHeight = self.bounds.size.height * (1 - progress);
+    self.bounds = CGRectMake(0, 0, MIN(self.frame.size.width, self.frame.size.height), MIN(self.frame.size.width, self.frame.size.height));
+    self.layer.cornerRadius = MIN(self.frame.size.width, self.frame.size.height) * 0.5;
+    self.layer.masksToBounds = YES;
+    self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.layer.borderWidth = 1.0f;
     
-    /*! 先停止动画,然后在开始动画,保证不会有什么冲突和重复. */
-    
+    self.waveLayer.frame = self.bounds;
+
+    self.label.frame = CGRectMake(0, 0, 80, 80);
+    self.label.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+
 }
 
 #pragma mark - 开始波动动画
@@ -99,7 +97,6 @@
     self.link = [CADisplayLink displayLinkWithTarget:self selector:@selector(ba_waveAnimation)];
     [self.link addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
 }
-
 
 #pragma mark - 停止波动动画
 - (void)ba_stopWaveAnimation
@@ -122,21 +119,75 @@
     self.offset += self.speed;
     CGMutablePathRef pathRef = CGPathCreateMutable();
     CGFloat startOffY = waveHeight * sinf(self.offset * M_PI * 2 / self.bounds.size.width);
-    CGFloat orignalOffY = 0.0f;
+    CGFloat orignalOffY = 0.0;
     CGPathMoveToPoint(pathRef, NULL, 0, startOffY);
-    
     for (CGFloat i = 0.f; i <= self.bounds.size.width; i++)
     {
         orignalOffY = waveHeight * sinf(2 * M_PI / self.bounds.size.width * i + self.offset * M_PI * 2 / self.bounds.size.width) + self.yHeight;
-        
         CGPathAddLineToPoint(pathRef, NULL, i, orignalOffY);
     }
     
-    /*! 连接四个角和以及波浪,共同组成水波. */
+    /*! 连接四个角和波浪,共同组成水波. */
+    CGPathAddLineToPoint(pathRef, NULL, self.bounds.size.width, orignalOffY);
+    CGPathAddLineToPoint(pathRef, NULL, self.bounds.size.width, self.bounds.size.height);
+    CGPathAddLineToPoint(pathRef, NULL, 0, self.bounds.size.height);
+    CGPathAddLineToPoint(pathRef, NULL, 0, startOffY);
+    CGPathCloseSubpath(pathRef);
     
-    
+    self.waveLayer.path = pathRef;
+    self.waveLayer.fillColor = self.waveColor.CGColor;
+    CGPathRelease(pathRef);
 }
 
+#pragma mark - setter / getter
+- (void)setWaveColor:(UIColor *)waveColor
+{
+    _waveColor = waveColor;
+    self.waveLayer.fillColor = self.waveColor.CGColor;
+}
 
+- (void)setSpeed:(CGFloat)speed
+{
+    _speed = speed;
+}
+
+- (void)setProgress:(CGFloat)progress
+{
+    _progress = progress;
+    /*! 将进度转成百分比. */
+    self.label.text = [NSString stringWithFormat:@"%ld%%", [[NSNumber numberWithFloat:progress * 100] integerValue]];
+    [self.label sizeToFit];
+    
+    /*! 由于y坐标轴的方向是由上向下,逐渐增加的,所以这里对于y坐标进行处理 */
+    self.yHeight = self.bounds.size.height * (1 - progress);
+    
+    /*! 先停止动画,然后在开始动画,保证不会有什么冲突和重复. */
+    [self ba_stopWaveAnimation];
+    [self ba_startWaveAnimation];
+}
+
+- (CAShapeLayer *)waveLayer
+{
+    if (!_waveLayer)
+    {
+        self.waveLayer = [CAShapeLayer layer];
+        self.waveLayer.fillColor = [UIColor whiteColor].CGColor;
+        [self.layer addSublayer:self.waveLayer];
+    }
+    return _waveLayer;
+}
+
+- (UILabel *)label
+{
+    if (!_label)
+    {
+        self.label = [[UILabel alloc] init];
+        self.label.font = [UIFont boldSystemFontOfSize:20];
+        self.label.textAlignment = 1;
+        self.label.textColor = [UIColor orangeColor];
+        [self addSubview:self.label];
+    }
+    return _label;
+}
 
 @end
