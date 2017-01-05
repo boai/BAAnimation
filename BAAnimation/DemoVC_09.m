@@ -11,13 +11,9 @@
 #import "BACABasicAnimationDemo.h"
 #import "BACAKeyframeAnimationDemo.h"
 #import "BADownloadViewDemo.h"
+#import "BATransitionDemo.h"
 
-
-/**
- *  获取屏幕宽度和高度
- */
-#define BA_SCREEN_WIDTH ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.width : [[UIScreen mainScreen] bounds].size.height)
-#define BA_SCREEN_HEIGHT ((([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) || ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown)) ? [[UIScreen mainScreen] bounds].size.height : [[UIScreen mainScreen] bounds].size.width)
+#import "BAAnimationHeader.h"
 
 
 #define DemoVC_09_title @"title"
@@ -84,9 +80,8 @@
     }
     else if (2 == indexPath.section)
     {
-        DemoVC_09_Detail *vc = [DemoVC_09_Detail new];
+        BATransitionDemo *vc = [BATransitionDemo new];
         vc.title = @"CATransition 转场动画";
-        vc.animationType = @(indexPath.row).intValue + 7;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else if (3 == indexPath.section)
