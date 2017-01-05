@@ -132,6 +132,8 @@
     }];
 }
 
+
+
 - (void)ba_animationTransition
 {
     [self.tomImageView ba_animation_transitionWithDuration:0.5f startOptions:UIViewAnimationOptionTransitionCrossDissolve finishOptions:UIViewAnimationOptionTransitionCurlDown finishBlock:^{

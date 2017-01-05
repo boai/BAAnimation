@@ -122,7 +122,7 @@
     group.delegate = self;
     
     [self.startView.layer addAnimation:group forKey:nil];
-    _backView.layer.masksToBounds = YES;
+    self.backView.layer.masksToBounds = YES;
     
     [self performSelector:@selector(loadPlayerToolViewAnimation) withObject:nil afterDelay:kAnimationDuration];
 }
@@ -169,7 +169,7 @@
     group.delegate = self;
 
     [self.startView.layer addAnimation:group forKey:nil];
-    self.backView.layer.masksToBounds = YES;
+    self.backView.layer.masksToBounds = NO;
 
     [self performSelector:@selector(startViewBackAnimation) withObject:nil afterDelay:kAnimationDuration];
 }
@@ -194,7 +194,7 @@
     animation.fillMode = kCAFillModeForwards;
     
     [self.startView.layer addAnimation:animation forKey:nil];
-    self.backView.layer. masksToBounds = YES;
+//    self.backView.layer. masksToBounds = YES;
     self.startBtn.hidden = NO;
 }
 
@@ -222,11 +222,11 @@
     NSLog(@"clickPause");
     self.playerToolView.hidden = YES;
 //    _backView.backgroundColor = [UIColor blackColor];
-    self.startView.hidden = NO;
     
     [self startViewChangeSmaller];
 
     [self showStartView];
+    self.startView.hidden = NO;
 }
 
 #pragma mark - setter/getter
@@ -278,6 +278,14 @@
         [_backView addSubview:_contentLabel];
     }
     return _contentLabel;
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+//    self.startBtn.frame = CGRectMake(0, 0, self.startView.frame.size.height , self.startView.frame.size.width);
+    
 }
 
 #pragma mark 开始按钮
