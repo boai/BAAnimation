@@ -186,7 +186,7 @@
                          @{
                              DemoVC_09_title : @[
                                      @{
-                                         @"name":@"1、转场动画"
+                                         @"name":@"1、CATransition 转场动画合集"
                                          }
                                      ]
                              },
