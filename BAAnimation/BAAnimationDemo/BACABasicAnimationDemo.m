@@ -293,7 +293,7 @@
 {
     if (!_startBtn)
     {
-        _startBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, self.startView.frame.size.height , self.startView.frame.size.width)];
+        _startBtn = [[UIButton alloc] initWithFrame:_startView.bounds];
         [_startBtn setImage:[UIImage imageNamed:@"ic_play_white.png"] forState:UIControlStateNormal];
         [_startBtn addTarget:self action:@selector(clickStartBtn) forControlEvents:UIControlEventTouchUpInside];
         [_startView addSubview:self.startBtn];
