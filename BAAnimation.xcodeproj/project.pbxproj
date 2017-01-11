@@ -60,6 +60,7 @@
 		C4677D801E1C94A40061E9E8 /* BAAnimationHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAAnimationHeader.h; sourceTree = "<group>"; };
 		C4909A801E2600B3009D533F /* UIView+BAAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BAAnimation.h"; sourceTree = "<group>"; };
 		C4909A811E2600B3009D533F /* UIView+BAAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BAAnimation.m"; sourceTree = "<group>"; };
+		C4909A831E260140009D533F /* BAAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAAnimation.h; sourceTree = "<group>"; };
 		C49BF1391E1DE2F9000D1164 /* UIView+BATransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BATransition.h"; sourceTree = "<group>"; };
 		C49BF13A1E1DE2F9000D1164 /* UIView+BATransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+BATransition.m"; sourceTree = "<group>"; };
 		C49BF13C1E1E2030000D1164 /* BATransitionDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATransitionDemo.h; sourceTree = "<group>"; };
@@ -183,6 +184,7 @@
 		C49D10E31E1B411A00962F14 /* BAAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				C4909A831E260140009D533F /* BAAnimation.h */,
 				C4909A7F1E2600B3009D533F /* BAUIViewAnimation */,
 				C49BF1381E1DE2DD000D1164 /* BATransition */,
 				C49D10E41E1B411A00962F14 /* BALoadingView */,
